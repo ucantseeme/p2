@@ -18,8 +18,11 @@ class User extends CI_Controller {
 
 	public function login(){
 		//echo "login form";
-		$data['list'] = "test from user controller";
-    $this->load->view('login', $data);
+		// $data['list'] = "test from user controller";
+		// $this->load->view('login', $data);
+		$this->load->view('header');
+    $this->load->view('login');
+		$this->load->view('footer');
 	}
 
 	public function login_post(){
