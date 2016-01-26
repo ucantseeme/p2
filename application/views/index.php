@@ -4,7 +4,7 @@
         <div class="jumbotron" style="background: rgba(0, 0, 0, 0.3) !important; color: #fff;">
           <h1>"The Nepali Style" Magazine</h1>
           <p>The Nepali Style Magazine is a visionary organization dedicated towards enhancing lifestyle Journalism in Nepal. With a young and dynamic team of committed individuals we are striving to offer our readers international standards in literature and photography with insights that are purely local.<p>
-            <a class="btn btn-lg btn-primary" href="<?php echo base_url('user/login');?>" role="button">Click to suscribe &raquo;</a>
+            <a class="btn btn-lg btn-primary" href="<?php echo base_url('user/suscribe');?>" role="button">Click to suscribe &raquo;</a>
           </p>
         </div>
     <!-- </div> -->

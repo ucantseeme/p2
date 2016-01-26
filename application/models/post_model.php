@@ -12,5 +12,11 @@ class Post_model extends CI_Model{
       return false;
     }
   }
+
+  public function insertPost($title, $content, $image){
+    $query = "INSERT INTO $this->table_name (title, content, image_name) VALUES ('$title', '$content', '$image')";
+    $this->db->query($query);
+    return true;
+  }
 }
 ?>

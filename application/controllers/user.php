@@ -61,7 +61,7 @@ class User extends CI_Controller {
 		if($result){
 			$sess_array =  array();
 			foreach($result as $row){
-				// set session 
+				// set session
 				$sess_array = array('username'=>$row->username, 'email'=>$row->email);
 				$this->session->set_userdata('logged_in', $sess_array);
 			}
@@ -78,6 +78,7 @@ class User extends CI_Controller {
 		$this->session->unset_userdata('logged_in');
 		$this->session->sess_destroy();
 		$data['msg_logged_out'] = "You have successfully logged out.";
+		$this->load->view('header');
 		$this->load->view('login',$data);
 		$this->load->view('footer');
 	}
@@ -101,5 +102,21 @@ class User extends CI_Controller {
 			$this->load->view('contact', $data);
 		}
 		$this->load->view('footer');
+	}
+
+	public function suscribe(){
+		if($this->session->has_userdata('logged_in')){
+			$session_data = $this->session->userdata('logged_in');
+      $data['email'] = $session_data['email'];
+      $data['username'] = $session_data['username'];
+			$data['msg_suscribe_success'] = "Thank you for suscribing us. Have a good day. :)";
+			$this->load->view('header', $data);
+      $this->load->view('login', $data);
+      $this->load->view('footer');
+		}else{
+			$data['msg_suscribe_error'] = "Please sign up to suscribe us. It's quick.";
+      $this->load->view('login', $data);
+      $this->load->view('footer');
+		}
 	}
 }

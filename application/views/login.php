@@ -12,12 +12,15 @@
                     <strong>
                         <?php echo isset($message_login_error) ? $message_login_error : '';?>
                         <?php echo isset($message_registration_error) ? $message_registration_error : '';?>
+                        <?php echo isset($msg_dwnld_error) ? '- '.$msg_dwnld_error.' -' : ''; ?>
+                        <?php echo isset($msg_suscribe_error) ? '- '.$msg_suscribe_error.' -' : ''; ?>
                     </strong>
                   </p>
                   <p style="color:#40ff00;">
                       <strong>
                           <?php echo isset($msg_logged_out) ? '- '.$msg_logged_out.' -' : '';?>
                           <?php echo isset($message_successfully_registered) ? '- '.$message_successfully_registered.' -' : '';?>
+                          <?php echo isset($msg_suscribe_success) ? '- '.$msg_suscribe_success.' -' : ''; ?>
                       </strong>
                   </p>
                 </div>

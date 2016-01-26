@@ -69,8 +69,12 @@
                 <ul class="nav navbar-nav navbar-right">
                   <!-- <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li> -->
                   <?php if($this->session->has_userdata('logged_in')): ?>
-
+                  <?php if(isset($username) && $username == "admin") : ?>
+                    <li><a href="<?php echo base_url('post');?>"><strong>Add Post</strong></a></li>
+                    <li><a href="#">Welcome, <strong>Admin!</strong></a></li>
+                  <?php else: ?>
                   <li><a href="#">Welcome, <strong><?php echo isset($username) ? $username : '';?>!</strong></a></li>
+              <?php endif; ?>
                   <li><a href="<?php echo base_url('user/logout');?>">Logout</a></li>
               <?php else: ?>
                   <li><a href="<?php echo base_url('user/login');?>">Sign in/Sign up</a></li>

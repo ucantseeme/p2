@@ -14,6 +14,8 @@ class Welcome extends CI_Controller {
       $data['username'] = $session_data['username'];
       $this->load->view('header', $data);
     }else{
+			$this->session->unset_userdata('logged_in');
+			$this->session->sess_destroy();
       $this->load->view('header');
     }
   }
@@ -45,14 +47,14 @@ class Welcome extends CI_Controller {
 
   public function download_file(){
     $file_name = "issue.pdf";
-    $data = file_get_contents(base_url().'assets/downloads/'.$file_name); // Read the file's contents
+    $file = file_get_contents(base_url().'assets/downloads/'.$file_name); // Read the file's contents
     $name = $file_name;
 
     if($this->session->has_userdata('logged_in')){
-      force_download($name, $data);
+      force_download($name, $file);
     }else{
-      echo "<script>alert('Please login to download the file.');</script>";
-      $this->load->view('index');
+      $data['msg_dwnld_error'] = "Please login to download the file.";
+      $this->load->view('login', $data);
       $this->load->view('footer');
     }
   }

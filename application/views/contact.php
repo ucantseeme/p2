@@ -64,7 +64,7 @@
             <div class="form-group">
               <label class="sr-only" for="form-first-name">Message</label>
               <!-- <input type="text" name="sender_name" value="<?php echo set_value('reg_fullname'); ?>" placeholder="Fullname" class="form-first-name form-control" id="form-first-name"> -->
-              <textarea class="form-control noresize" name="email_message" rows="8" placeholder="Enter you message here..." style="width:100%;"></textarea>
+              <textarea class="form-control noresize" name="email_message" rows="8" placeholder="Enter your message here..." style="width:100%;"></textarea>
             </div>
             <?php if (form_error('email_message')!=""):?>
               <div class="alert alert-danger" > <?php echo form_error('email_message'); ?></div>
