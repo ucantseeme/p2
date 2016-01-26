@@ -1,20 +1,24 @@
-<!-- <form class="" action="<?php echo base_url(). 'user/login_post'; ?>" method="post">
-  Username: <input type="text" name="username" value="username"><br/>
-  Password: <input type="password" name="pass" value="password"><br/>
-  <input type="submit" name="login" value="login">
-</form> -->
-
 <div class="inner-bg">
     <div class="container">
 
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2 text">
-                <h1><strong>Bootstrap</strong> Login &amp; Register Forms</h1>
+                <h1><strong>The Nepali Style</strong> Login &amp; Register Forms</h1>
                 <div class="description">
                   <p>
-                    This is a free responsive <strong>"login and register forms"</strong> template made with Bootstrap.
-                    Download it on <a href="http://azmind.com" target="_blank"><strong>AZMIND</strong></a>,
-                    customize and use it as you like!
+                    You can <strong>"login and register"</strong> with these two forms below. Have fun and <strong>Cheers!</strong> :)
+                  </p>
+                  <p style="color:#ff1a1a;">
+                    <strong>
+                        <?php echo isset($message_login_error) ? $message_login_error : '';?>
+                        <?php echo isset($message_registration_error) ? $message_registration_error : '';?>
+                    </strong>
+                  </p>
+                  <p style="color:#40ff00;">
+                      <strong>
+                          <?php echo isset($msg_logged_out) ? '- '.$msg_logged_out.' -' : '';?>
+                          <?php echo isset($message_successfully_registered) ? '- '.$message_successfully_registered.' -' : '';?>
+                      </strong>
                   </p>
                 </div>
             </div>
@@ -34,15 +38,25 @@
                   </div>
                   </div>
                   <div class="form-bottom">
-                <form role="form" action="" method="post" class="login-form">
+                <?php
+                  $attributes = array('class'=>'login-form');
+                  echo form_open('user/login_validate', $attributes);
+                ?>
                   <div class="form-group">
                     <label class="sr-only" for="form-username">Username</label>
-                      <input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="form-username">
+                      <input type="text" name="log_username" value="<?php echo set_value('log_username');?>" placeholder="Username..." class="form-username form-control" id="form-username">
                     </div>
+                    <?php if(form_error('log_username')!=""): ?>
+                    <div class="alert alert-danger" ><?php echo form_error('log_username'); ?></div>
+                    <?php endif; ?>
+
                     <div class="form-group">
                       <label class="sr-only" for="form-password">Password</label>
-                      <input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
+                      <input type="password" name="log_password" value="<?php echo set_value('log_password');?>" placeholder="Password..." class="form-password form-control" id="form-password">
                     </div>
+                    <?php if(form_error('log_password')!=""): ?>
+                    <div class="alert alert-danger" ><?php echo form_error('log_password'); ?></div>
+                    <?php endif; ?>
                     <button type="submit" class="btn">Sign in!</button>
                 </form>
               </div>
@@ -81,25 +95,50 @@
                   </div>
                   </div>
                   <div class="form-bottom">
-                <form role="form" action="" method="post" class="registration-form">
+                  <?php
+                    $attributes = array('class'=>'registration-form');
+                    echo form_open('user/signup_validate', $attributes);
+                  ?>
                   <div class="form-group">
-                    <label class="sr-only" for="form-first-name">First name</label>
-                      <input type="text" name="form-first-name" placeholder="First name..." class="form-first-name form-control" id="form-first-name">
-                    </div>
-                    <div class="form-group">
-                      <label class="sr-only" for="form-last-name">Last name</label>
-                      <input type="text" name="form-last-name" placeholder="Last name..." class="form-last-name form-control" id="form-last-name">
-                    </div>
-                    <div class="form-group">
-                      <label class="sr-only" for="form-email">Email</label>
-                      <input type="text" name="form-email" placeholder="Email..." class="form-email form-control" id="form-email">
-                    </div>
-                    <div class="form-group">
-                      <label class="sr-only" for="form-about-yourself">About yourself</label>
-                      <textarea name="form-about-yourself" placeholder="About yourself..."
-                            class="form-about-yourself form-control" id="form-about-yourself"></textarea>
-                    </div>
-                    <button type="submit" class="btn">Sign me up!</button>
+                    <label class="sr-only" for="form-first-name">Username</label>
+                      <input type="text" name="reg_username" value="<?php echo set_value('reg_username'); ?>" placeholder="Username" class="form-first-name form-control" id="form-first-name">
+                  </div>
+                  <?php if (form_error('reg_username')!=""):?>
+                  <div class="alert alert-danger" > <?php echo form_error('reg_username'); ?></div>
+                  <?php endif;?>
+
+                  <div class="form-group">
+                    <label class="sr-only" for="form-email">Email</label>
+                    <input type="text" name="reg_email" value="<?php echo set_value('reg_email'); ?>" placeholder="Email..." class="form-email form-control" id="form-email">
+                  </div>
+                  <?php if (form_error('reg_email')!=""):?>
+                  <div class="alert alert-danger" > <?php echo form_error('reg_email'); ?></div>
+                  <?php endif;?>
+
+                  <div class="form-group">
+                    <label class="sr-only" for="form-first-name">Password</label>
+                      <input type="password" name="reg_password" value="<?php echo set_value('reg_password'); ?>" placeholder="Password" class="form-first-name form-control" id="form-password">
+                  </div>
+                  <?php if (form_error('reg_password')!=""):?>
+                  <div class="alert alert-danger" > <?php echo form_error('reg_password'); ?></div>
+                  <?php endif;?>
+
+                  <div class="form-group">
+                    <label class="sr-only" for="form-first-name">Confirm Password</label>
+                      <input type="password" name="reg_confirm_password" value="<?php echo set_value('reg_confirm_password'); ?>" placeholder="Confirm Password" class="form-first-name form-control" id="form-password">
+                  </div>
+                  <?php if (form_error('reg_confirm_password')!=""):?>
+                  <div class="alert alert-danger" > <?php echo form_error('reg_confirm_password'); ?></div>
+                  <?php endif;?>
+
+                  <div class="form-group">
+                    <label class="sr-only" for="form-first-name">Fullname</label>
+                      <input type="text" name="reg_fullname" value="<?php echo set_value('reg_fullname'); ?>" placeholder="Fullname" class="form-first-name form-control" id="form-first-name">
+                  </div>
+                  <?php if (form_error('reg_fullname')!=""):?>
+                  <div class="alert alert-danger" > <?php echo form_error('reg_fullname'); ?></div>
+                  <?php endif;?>
+                  <button type="submit" class="btn">Sign me up!</button>
                 </form>
               </div>
               </div>
@@ -108,6 +147,4 @@
         </div>
 
     </div>
-</div>
-
 </div>

@@ -1,0 +1,14 @@
+RewriteEngine On
+RewriteBase /p2
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_URI} !-f
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+
+
+RewriteRule ^(.*)$ index.php?/$1 [L]
+
+// not using it //
+RewriteCond $1 !^(index\.php|images|stylesheets|scripts|robots\.txt)
+RewriteRule (.*) index.php?$1 [QSA,L]

@@ -4,8 +4,8 @@ jQuery(document).ready(function() {
     /*
         Fullscreen background
     */
-    $.backstretch("http://localhost/p2/img/backgrounds/1.jpg");
-
+    var url_path = window.location.host;
+    $.backstretch("http://"+url_path+"/p2/assets/img/backgrounds/1.jpg");
     /*
         Login form validation
     */

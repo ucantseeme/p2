@@ -10,10 +10,10 @@
 
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
-        <link rel="stylesheet" href="<?php echo base_url().'assets/bootstrap/css/bootstrap.min.css';?>">
-        <link rel="stylesheet" href="<?php echo base_url().'assets/font-awesome/css/font-awesome.min.css';?>">
-		    <link rel="stylesheet" href="<?php echo base_url().'assets/css/form-elements.css';?>">
-        <link rel="stylesheet" href="<?php echo base_url().'assets/css/style.css';?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css');?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/font-awesome/css/font-awesome.min.css');?>">
+		<link rel="stylesheet" href="<?php echo base_url('assets/css/form-elements.css');?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css');?>">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -23,11 +23,11 @@
         <![endif]-->
 
         <!-- Favicon and touch icons -->
-        <link rel="shortcut icon" href="<?php echo base_url().'assets/ico/favicon.png';?>">
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo base_url().'assets/ico/apple-touch-icon-144-precomposed.png';?>">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url().'assets/ico/apple-touch-icon-114-precomposed.png';?>">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url().'assets/ico/apple-touch-icon-72-precomposed.png';?>">
-        <link rel="apple-touch-icon-precomposed" href="<?php echo base_url().'assets/ico/apple-touch-icon-57-precomposed.png';?>">
+        <link rel="shortcut icon" href="<?php echo base_url('assets/ico/favicon.png');?>">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo base_url('assets/ico/apple-touch-icon-144-precomposed.png');?>">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url('assets/ico/apple-touch-icon-114-precomposed.png');?>">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url('assets/ico/apple-touch-icon-72-precomposed.png');?>">
+        <link rel="apple-touch-icon-precomposed" href="<?php echo base_url('assets/ico/apple-touch-icon-57-precomposed.png');?>">
 
     </head>
 
@@ -46,14 +46,14 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Project name</a>
+                <a class="navbar-brand" href="<?php echo base_url();?>"><strong>The Nepali Style</strong></a>
               </div>
               <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="#about">About</a></li>
-                  <li><a href="#contact">Contact</a></li>
-                  <li class="dropdown">
+                  <li class="active"><a href="<?php echo base_url();?>">Home</a></li>
+                  <li><a href="<?php echo base_url('welcome/about');?>">About</a></li>
+                  <li><a href="<?php echo base_url('welcome/contact');?>">Contact</a></li>
+                  <!-- <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                       <li><a href="#">Action</a></li>
@@ -64,7 +64,18 @@
                       <li><a href="#">Separated link</a></li>
                       <li><a href="#">One more separated link</a></li>
                     </ul>
-                  </li>
+                  </li> -->
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <!-- <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li> -->
+                  <?php if($this->session->has_userdata('logged_in')): ?>
+
+                  <li><a href="#">Welcome, <strong><?php echo isset($username) ? $username : '';?>!</strong></a></li>
+                  <li><a href="<?php echo base_url('user/logout');?>">Logout</a></li>
+              <?php else: ?>
+                  <li><a href="<?php echo base_url('user/login');?>">Sign in/Sign up</a></li>
+              <?php endif; ?>
+                  <!-- <li><a href="../navbar-fixed-top/">Logout</a></li> -->
                 </ul>
               </div><!--/.nav-collapse -->
             </div>
